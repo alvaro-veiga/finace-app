@@ -20,6 +20,7 @@ class SplashPage extends StatelessWidget {
           ),
         ),
         child: const Text("Finance", style: TextStyle(
+          fontFamily: 'Inter',
           fontSize: 50.0, 
           fontWeight: FontWeight.w700, 
           color: AppCollors.white),),
