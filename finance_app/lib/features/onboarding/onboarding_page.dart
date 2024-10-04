@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:finance_app/common/constants/app_collors.dart';
+import 'package:finance_app/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -31,9 +34,9 @@ class OnboardingPage extends StatelessWidget {
             fontWeight: FontWeight.w700,
             color: AppCollors.greenlightTwo
           ),),
-          OutlinedButton(
-            onPressed: () {}, 
-            child: const Text('Get Started')),
+          PrimaryButton(text: 'Get started', onPressed: () {},),
+         
+          
           const Text('Already have account? Log In', style: TextStyle(
             fontFamily: 'inter',
             fontSize: 14.0,
@@ -47,3 +50,4 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 }
+
