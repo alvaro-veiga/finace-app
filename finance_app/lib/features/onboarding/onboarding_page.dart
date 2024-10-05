@@ -18,10 +18,9 @@ class OnboardingPage extends StatelessWidget {
         children: [
           const SizedBox(height: 60.0,),
           Expanded(
-            flex: 2,
             child: Container(
               color: AppCollors.iceWhite,
-              child: Image.asset("assets/images/man.png"),
+              child: Image.asset("assets/images/finance.png"),
               )
           ),
           const Text('Spend smarter', style: TextStyle(
