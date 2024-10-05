@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:finance_app/common/constants/app_collors.dart';
+import 'package:finance_app/widgets/custom_text_button.dart';
 import 'package:finance_app/widgets/primary_button.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -35,14 +37,27 @@ class OnboardingPage extends StatelessWidget {
             color: AppCollors.greenlightTwo
           ),),
           PrimaryButton(text: 'Get started', onPressed: () {},),
-         
-          
-          const Text('Already have account? Log In', style: TextStyle(
+          CustomTextButton(
+          onPressed: () => log(1),
+          children: [ 
+          Text(
+            'Already have account? ',
+            style: TextStyle(
+              fontFamily: 'inter',
+              fontSize: 14.0,
+              fontWeight: FontWeight.w500,
+              color: AppCollors.grey
+            )
+          ),
+        Text(
+          'Log in ',
+          style: TextStyle(
             fontFamily: 'inter',
             fontSize: 14.0,
             fontWeight: FontWeight.w500,
-            color: AppCollors.grey
-          ),)
+            color: AppCollors.greenlightTwo
+          )
+        )],),
         ],
       ),
       ),
@@ -50,4 +65,5 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 }
+
 
