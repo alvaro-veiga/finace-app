@@ -1,5 +1,6 @@
 import 'package:finance_app/common/constants/app_collors.dart';
 import 'package:finance_app/widgets/custom_text_button.dart';
+import 'package:finance_app/widgets/custom_text_form_field.dart';
 import 'package:finance_app/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,10 @@ class SignUpPage extends StatelessWidget {
           Form(
             child: Column(
               children: [
-                CustomTextFormField(),
+                CustomTextFormField(
+                  labelText: 'your name',
+                  hintText: 'John Doe',
+                ),
                 const SizedBox(height: 20.0),
               ],
             ),
@@ -77,49 +81,3 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-class CustomTextFormField extends StatefulWidget {
-  final EdgeInsetsGeometry? padding;
-  const CustomTextFormField({
-    Key ? key,
-    this.padding,
-  }) : super(key: key);
-
-  @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-
-  final defaultBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: AppCollors.greenlightTwo)
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: widget.padding ?? const EdgeInsets.symmetric(
-        horizontal: 24.0,
-        vertical: 12.0
-      ),
-      child: TextFormField(
-        decoration:  InputDecoration(
-          labelText: "your name".toUpperCase(),
-          labelStyle: const TextStyle(
-            fontFamily: 'Inter',
-            fontSize: 14.0,
-            fontWeight: FontWeight.w400
-          ).copyWith(color: AppCollors.darkGrey),
-          focusedBorder: defaultBorder.copyWith(
-            borderSide: const BorderSide(
-              color: Colors.red,
-            )
-          ),
-          errorBorder: defaultBorder,
-          focusedErrorBorder: defaultBorder,
-          enabledBorder: defaultBorder,
-          disabledBorder: defaultBorder,
-        ),
-      ),
-    );
-  }
-}
