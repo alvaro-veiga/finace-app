@@ -1,6 +1,7 @@
 import 'package:finance_app/common/constants/app_collors.dart';
 import 'package:finance_app/widgets/custom_text_button.dart';
 import 'package:finance_app/widgets/custom_text_form_field.dart';
+import 'package:finance_app/widgets/password_form_field.dart';
 import 'package:finance_app/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,23 @@ class SignUpPage extends StatelessWidget {
                 CustomTextFormField(
                   labelText: 'your name',
                   hintText: 'John Doe',
+                  icon: const Icon(Icons.person),
+                ),
+                const SizedBox(height: 20.0),
+                CustomTextFormField(
+                  labelText: 'your email',
+                  hintText: 'email@email.com',
+                  icon: const Icon(Icons.email),
+                ),
+                const SizedBox(height: 20.0),
+                PasswordFormField(
+                  labelText: 'choose your password',
+                  hintText: '********',
+                ),
+                const SizedBox(height: 20.0),
+                PasswordFormField(
+                  labelText: 'confirm your password',
+                  hintText: '********',
                 ),
                 const SizedBox(height: 20.0),
               ],
