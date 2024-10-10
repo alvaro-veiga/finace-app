@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:finance_app/common/constants/app_collors.dart';
 import 'package:finance_app/widgets/custom_text_button.dart';
 import 'package:finance_app/widgets/custom_text_form_field.dart';
@@ -5,8 +7,16 @@ import 'package:finance_app/widgets/password_form_field.dart';
 import 'package:finance_app/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+
+  final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,28 +48,53 @@ class SignUpPage extends StatelessWidget {
           Image.asset('assets/images/sing_up.png'),
           const SizedBox(height: 20.0),
           Form(
+            key: _formkey,
             child: Column(
               children: [
                 CustomTextFormField(
                   labelText: 'your name',
                   hintText: 'John Doe',
                   icon: const Icon(Icons.person),
+                  validator: (value) {
+                    if(value != null && value.isEmpty) {
+                      return "Esse campo não pode ser vazio";
+                    }
+                    return null;
+                  } ,
                 ),
                 const SizedBox(height: 20.0),
                 CustomTextFormField(
                   labelText: 'your email',
                   hintText: 'email@email.com',
                   icon: const Icon(Icons.email),
+                  validator: (value) {
+                    if(value != null && value.isEmpty) {
+                      return "Informe um email valido";
+                    }
+                    return null;
+                  } ,
                 ),
                 const SizedBox(height: 20.0),
                 PasswordFormField(
                   labelText: 'choose your password',
                   hintText: '********',
+                  validator: (value) {
+                    if(value != null && value.isEmpty) {
+                      return "Insira uma senha valida";
+                    }
+                    return null;
+                  } ,
                 ),
                 const SizedBox(height: 20.0),
                 PasswordFormField(
                   labelText: 'confirm your password',
                   hintText: '********',
+                  validator: (value) {
+                    if(value != null && value.isEmpty) {
+                      return "Insira uma senha valida";
+                    }
+                    return null;
+                  } ,
                 ),
                 const SizedBox(height: 20.0),
               ],
@@ -67,7 +102,14 @@ class SignUpPage extends StatelessWidget {
           ),
           PrimaryButton(
             text: 'Sign Up',
-            onPressed: () {},
+            onPressed: () {
+              final valid = _formkey.currentState != null && _formkey.currentState!.validate();
+              if(valid) {
+                log('continuar lógica de login');
+              }else {
+                log('erro ao logar');
+              }
+            },
           ),
           const SizedBox(height: 10.0),
           CustomTextButton(

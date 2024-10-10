@@ -13,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   final Icon? icon;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final FormFieldValidator<String>? validator;
   const CustomTextFormField({
     Key ? key,
     this.padding,
@@ -26,6 +27,7 @@ class CustomTextFormField extends StatefulWidget {
     this.icon,
     this.suffixIcon,
     this.obscureText,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         vertical: 12.0
       ),
       child: TextFormField(
+        validator: widget.validator,
         obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
         maxLength: widget.maxLength,

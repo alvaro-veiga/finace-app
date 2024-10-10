@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:finance_app/common/constants/app_collors.dart';
 import 'package:finance_app/widgets/custom_text_button.dart';
 import 'package:finance_app/widgets/primary_button.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
