@@ -14,6 +14,7 @@ class CustomTextFormField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final FormFieldValidator<String>? validator;
+  final String? helperText;
   const CustomTextFormField({
     Key ? key,
     this.padding,
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     this.obscureText,
     this.validator,
+    this.helperText,
   }) : super(key: key);
 
   @override
@@ -40,6 +42,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     borderSide: BorderSide(color: AppCollors.greenlightTwo)
   );
 
+
+  String? _helperText;
+
+  @override
+  void initState() {
+    super.initState();
+    _helperText = widget.helperText;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,6 +59,17 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         vertical: 12.0
       ),
       child: TextFormField(
+        onChanged: (value) {
+          if(value.length == 1){
+            setState(() {
+              _helperText = null;
+            });
+          }else if (value.isEmpty){
+            setState(() {
+              _helperText = widget.helperText;
+            });
+          }
+        },
         validator: widget.validator,
         obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
@@ -56,6 +78,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         controller: widget.controller,
         textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
         decoration:  InputDecoration(
+          helperMaxLines: 3,
+          helperText: _helperText,
           suffixIcon: widget.suffixIcon,
           prefixIcon: widget.icon,
           hintText: widget.hintText,

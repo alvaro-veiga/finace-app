@@ -57,7 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: const Icon(Icons.person),
                   validator: (value) {
                     if(value != null && value.isEmpty) {
-                      return "Esse campo não pode ser vazio";
+                      return "This field cannot be empty";
                     }
                     return null;
                   } ,
@@ -69,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: const Icon(Icons.email),
                   validator: (value) {
                     if(value != null && value.isEmpty) {
-                      return "Informe um email valido";
+                      return "Enter a valid email";
                     }
                     return null;
                   } ,
@@ -80,10 +80,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: '********',
                   validator: (value) {
                     if(value != null && value.isEmpty) {
-                      return "Insira uma senha valida";
+                      return "Enter a valid password";
                     }
                     return null;
                   } ,
+                  helperText: "Must have at least 8 characters, 1 capital letter and 1 number",
                 ),
                 const SizedBox(height: 20.0),
                 PasswordFormField(
@@ -91,7 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: '********',
                   validator: (value) {
                     if(value != null && value.isEmpty) {
-                      return "Insira uma senha valida";
+                      return "Enter a valid password";
                     }
                     return null;
                   } ,
