@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:finance_app/common/constants/app_collors.dart';
+import 'package:finance_app/common/utils/validator.dart';
 import 'package:finance_app/widgets/custom_text_button.dart';
 import 'package:finance_app/widgets/custom_text_form_field.dart';
 import 'package:finance_app/widgets/password_form_field.dart';
@@ -17,6 +18,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
 
   final _formkey = GlobalKey<FormState>();
+
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,47 +58,28 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'your name',
                   hintText: 'John Doe',
                   icon: const Icon(Icons.person),
-                  validator: (value) {
-                    if(value != null && value.isEmpty) {
-                      return "This field cannot be empty";
-                    }
-                    return null;
-                  } ,
+                  validator: Validator.validateName ,
                 ),
                 const SizedBox(height: 20.0),
                 CustomTextFormField(
                   labelText: 'your email',
                   hintText: 'email@email.com',
                   icon: const Icon(Icons.email),
-                  validator: (value) {
-                    if(value != null && value.isEmpty) {
-                      return "Enter a valid email";
-                    }
-                    return null;
-                  } ,
+                  validator: Validator.validateEmail ,
                 ),
                 const SizedBox(height: 20.0),
                 PasswordFormField(
+                  controller: _passwordController,
                   labelText: 'choose your password',
                   hintText: '********',
-                  validator: (value) {
-                    if(value != null && value.isEmpty) {
-                      return "Enter a valid password";
-                    }
-                    return null;
-                  } ,
+                  validator: Validator.validatePassword,
                   helperText: "Must have at least 8 characters, 1 capital letter and 1 number",
                 ),
                 const SizedBox(height: 20.0),
                 PasswordFormField(
                   labelText: 'confirm your password',
                   hintText: '********',
-                  validator: (value) {
-                    if(value != null && value.isEmpty) {
-                      return "Enter a valid password";
-                    }
-                    return null;
-                  } ,
+                  validator: (value) => Validator.validateConfirmPassword(value, _passwordController.text),
                 ),
                 const SizedBox(height: 20.0),
               ],
